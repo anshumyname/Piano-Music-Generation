@@ -18,11 +18,11 @@ Then after that you will listen your input tune as well as after a few moments y
 It may be not very good becz there are more parameters that affect a tune rather than only notes
 
 ### Libraries Requirements
-pip install
-  ->music21
-  ->keras 2.0 and tensorflow
-  ->numpy , pandas
-  ->glob and os
+pip install<br/>
+  ->music21<br/>
+  ->keras 2.0 and tensorflow<br/>
+  ->numpy , pandas<br/>
+  ->glob and os<br/>
   
   
 ### Repo Fragments
@@ -37,11 +37,15 @@ Pianoscript.py:  the script for user which is for  the user testing.
 Notes.csv:  all piano notes that can be predicted by the model
 
 ### How to Run?
-After installing all the requirements of code u need to just do a few things more
-    ->In pianoscript.py change the path according to your system. (For convenience I have mentioned where to change the paths 
-      Now open anaconda prompt or cmd:
-   ->Move to folder where all files you have stored
-   -> run the script by “python pianoscript.py”
+->After installing all the requirements of code u need to just do a few things more.
+
+->In pianoscript.py change the path according to your system.(For convenience I have mentioned where to change the paths)
+    
+Now open anaconda prompt or cmd:<br/>
+    ->Move to folder where all files you have stored<br/>
+    -> run the script by “python pianoscript.py”<br/>
+    
+    
 
 
 
