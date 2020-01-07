@@ -1,3 +1,11 @@
+'''
+
+Please change the path of files where mentioned before running the script
+The locatins are denoted by ###########
+
+'''
+
+
 print("\n\n=========================START====================\n")
 print("\nLoading libraries.......")
       
@@ -22,18 +30,23 @@ print("For multiple notes entry separate them by ','.. like {A6,B7,D2,G5}")
 
 seq_len=100
 input_line= input()
-input_segment= input_line.split(",")
-input_seg= input_segment
+x= input_line.split(",")
+input_seg= list(x)
+
+print(x)
 while len(input_seg)<100:
         input_seg+=input_seg
-input_seg= np.array(input_seg)
-input_seg= input_seg[:seq_len]
-
+        #print(input_seg)
+        #print(x)
+        
+input_seg = np.array(input_seg)
+input_seg = input_seg[:seq_len]
+#print(x)
 print("Here your input piano tune..........\n\n")
 
 ofset=0
 input_notes=[]
-for nt in input_segment:
+for nt in x:
     newnote= note.Note(nt)
     newnote.offset= ofset
     newnote.storedInstrument= instrument.Piano()
@@ -41,13 +54,14 @@ for nt in input_segment:
     input_notes.append(newnote)
 
 inpmidi=stream.Stream(input_notes)
-inpmidi.write('midi',fp='C:/Users/user/pianofiles/input.mid')
-os.startfile('C:/Users/user/pianofiles/input.mid')
+##############CHANGE THE PATH ACCORDING TO YOUR SYSTEM HERE
+inpmidi.write('midi',fp='C:/Users/user/pianofiles/input.mid')            #Path to store your input audio file
+os.startfile('C:/Users/user/pianofiles/input.mid')                      #Same path to open your input file
 
 #Creating note->int dictionary from csv file notes.csv
 notes2int={}
-
-with open('C:/Users/user/pianofiles/notes.csv') as f:
+##############CHANGE THE PATH ACCORDING TO YOUR SYSTEM HERE 
+with open('C:/Users/user/pianofiles/pmg/notes.csv') as f: #Reading notes.csv
     reader= csv.reader(f)
     for line in reader:
         notes2int[line[1]]=int(line[0])
@@ -74,7 +88,8 @@ def make_model():
 model = make_model()
 #model.summary()
 model.compile(loss='categorical_crossentropy', optimizer='adam',metrics=['accuracy'])
-model.load_weights('../pianofiles/weights3layermodel.h5')
+##############CHANGE THE PATH ACCORDING TO YOUR SYSTEM HERE
+model.load_weights('../pianofiles/3lstm_65_acc_88.h5') #loading weighrs to the model
 
 pred_out=[]
 pattern= np.array(input_ex)/len(notes2int)
@@ -117,15 +132,16 @@ for pattern in pred_out:
         newnote.storedInstrument = instrument.Piano()
         output_notes.append(newnote)
     
-    offset+=1.0
+    offset+=0.5
 
 midistream= stream.Stream(output_notes)
-midistream.write('midi',fp='C:/Users/user/pianofiles/output.mid')
+##############CHANGE THE PATH ACCORDING TO YOUR SYSTEM HERE
+midistream.write('midi',fp='C:/Users/user/pianofiles/output.mid') #Path where your output file will be saved
 
 print("\n\nHere's the melody produced from your input.....")
-      
-os.startfile('C:/Users/user/pianofiles/output.mid')
-os.closefile('C:/Users/user/pianofiles/output.mid')
+##############CHANGE THE PATH ACCORDING TO YOUR SYSTEM HERE
+os.startfile('C:/Users/user/pianofiles/output.mid')           #Same Path to start the output file writen above
+
 
 print("=======================END=======================")
 
