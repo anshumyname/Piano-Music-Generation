@@ -45,7 +45,9 @@ Now open anaconda prompt or cmd:<br/>
     ->Move to folder where all files you have stored<br/>
     -> run the script by “python pianoscript.py”<br/>
     
-    
+###References
+Medium : https://medium.com/@alexissa122/generating-original-classical-music-with-an-lstm-neural-network-and-attention-abf03f9ddcb4
+Github: https://github.com/Skuldur/Classical-Piano-Composer
 
 
 
