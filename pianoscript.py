@@ -19,8 +19,7 @@ from keras.layers import Dense,Dropout,Activation,LSTM
 from keras.models import Model,Sequential
 from music21 import stream
 from music21 import converter, instrument,note,chord
-import tensorflow as tf
-tf.logging.set_verbosity(tf.logging.ERROR)
+
 
 print("...Loaded...")
 print("\n\nEnter Piano notes with keys as A-G then the octave number 1-6")
@@ -55,13 +54,13 @@ for nt in x:
 
 inpmidi=stream.Stream(input_notes)
 ##############CHANGE THE PATH ACCORDING TO YOUR SYSTEM HERE
-inpmidi.write('midi',fp='C:/Users/user/pianofiles/input.mid')            #Path to store your input audio file
-os.startfile('C:/Users/user/pianofiles/input.mid')                      #Same path to open your input file
+inpmidi.write('midi',fp='C:/Users/sriva/pmg/input.mid')            #Path to store your input audio file
+os.startfile('C:/Users/sriva/pmg/input.mid')                      #Same path to open your input file
 
 #Creating note->int dictionary from csv file notes.csv
 notes2int={}
 ##############CHANGE THE PATH ACCORDING TO YOUR SYSTEM HERE 
-with open('C:/Users/user/pianofiles/pmg/notes.csv') as f: #Reading notes.csv
+with open('C:/Users/sriva/pmg/notes.csv') as f: #Reading notes.csv
     reader= csv.reader(f)
     for line in reader:
         notes2int[line[1]]=int(line[0])
@@ -89,7 +88,7 @@ model = make_model()
 #model.summary()
 model.compile(loss='categorical_crossentropy', optimizer='adam',metrics=['accuracy'])
 ##############CHANGE THE PATH ACCORDING TO YOUR SYSTEM HERE
-model.load_weights('../pianofiles/3lstm_65_acc_88.h5') #loading weighrs to the model
+model.load_weights('../pmg/weights3layermodel.h5') #loading weighrs to the model
 
 pred_out=[]
 pattern= np.array(input_ex)/len(notes2int)
@@ -136,11 +135,11 @@ for pattern in pred_out:
 
 midistream= stream.Stream(output_notes)
 ##############CHANGE THE PATH ACCORDING TO YOUR SYSTEM HERE
-midistream.write('midi',fp='C:/Users/user/pianofiles/output.mid') #Path where your output file will be saved
+midistream.write('midi',fp='C:/Users/sriva/pmg/output.mid') #Path where your output file will be saved
 
 print("\n\nHere's the melody produced from your input.....")
 ##############CHANGE THE PATH ACCORDING TO YOUR SYSTEM HERE
-os.startfile('C:/Users/user/pianofiles/output.mid')           #Same Path to start the output file writen above
+os.startfile('C:/Users/sriva/pmg/output.mid')           #Same Path to start the output file writen above
 
 
 print("=======================END=======================")
