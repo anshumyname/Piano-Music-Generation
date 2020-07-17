@@ -17,6 +17,10 @@ On which user has to give the input
 Then after that you will listen your input tune as well as after a few moments you will get a predicted pattern..
 It may be not very good becz there are more parameters that affect a tune rather than only notes
 
+### Demo
+- INPUT Listen to (input.mid)
+- OUPUT Listen to (output.mid)
+
 ### Libraries Requirements
 pip install<br/>
   ->music21<br/>
