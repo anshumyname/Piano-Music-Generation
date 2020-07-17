@@ -20,7 +20,7 @@ It may be not very good becz there are more parameters that affect a tune rather
 ### Libraries Requirements
 pip install<br/>
   ->music21<br/>
-  ->keras 2.0<br/>
+  ->keras 2.0 and tensorflow<br/>
   ->numpy , pandas<br/>
   ->glob and os<br/>
   
